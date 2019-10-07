@@ -1,0 +1,103 @@
+#Zadanie 1
+Przerwanie sprzętowe (hardware interrupt) - elektorniczny sygnał zgłaszany przez zewnętrzne urządzenie które potrzebuje atencji ze strony systemu operacyjnego, są asynchorniczne czyli respektują że procesor robi coś ważniejszego.
+Przykłady:
+-wciśniecie klawisza na klawiaturze
+-przesunięcie myszką
+-nadejście pakietu z sieci
+
+
+Wyjątek procesora (exception) - przerwanie wykonywania biężącego strumienia instrukcji przez procesor i przekazanie sterowania do systemu operacyjnego. Przerwania to wyjątki asynchroniczne (ich obsługa może być opóźniona), pułapki i błędy to wyjątki synchroniczne obsługiwane bezpośrednio po wystąpienu.
+Przykłady:
+-dzielenie przez zero
+-błąd strony
+-błędne odwołanie do pamięci
+
+Pułapka (trap) - synchroniczne przerwanie oprogramowania tworzone przez programistę, zwraca kontrolę systemowi operacyjnemu
+Przykłady:
+-breakpoint przy debugowaniu
+-sygnalizacja wystąpienia overflow przy operacji arytmetycznej
+-asercje
+
+W jakim scenariuszu wyjątek procesora nie oznacza błędu czasu wykonania programu?
+#TODO
+Kiedy pułapka jest generowana w wyniku prawidłowej pracy programu?
+Np wywołania systemowe
+
+#Zadanie 2
+
+Obsługa przerwań - kiedy procesor odbierze żądanie przerwania odkłada na stosie aktualny stan rejestru licznika programu, a następnie sprawdza w wektorze przerwań, do jakiej procedury obsługi przerwania powinien skoczyć. W procedurze tej procesor określi, jakie urządzenie zgłosiło przerwanie i wywoła odpowiednią podprocedurę. Ostatnią instrukcją w procedurze obsługi przerwania jest rozkaz reti (ang. return from interrupt), który pozwala mu wrócić do poprzednich czynności sprzed wystąpienia przerwania.
+
+Mechanizm obsługi:
+-zachowaj kontekst programu
+-wykryj urządzenie które zgłosiło przerwanie
+-obsłuż przerwanie
+-poinformuj sprzęt że obsłużono
+-przywróć kontekst programu
+-zawołaj instrukcję reti 
+
+Wektor przerwań - tablica zawierająca dresy procedur lub też instrukcje skoku do procedur obsługi poszczególnych przerwań
+
+tryb nadzorcy - jest to tryb, który pozwala na wykonywanie wszystkich instrukcji procesora, włącznie z
+uprzywilejowanymi. Pozwala na nieograniczony dostęp do peryferiów komputera, włączanie/wyłączanie przerwań,
+tworzenie nowych i modyfikowanie istniejących przestrzeni adresowych. Używany jest zazwyczaj przez system
+operacyjny. Tryb nadzorcy pomaga zabezpieczyć dane systemu operacyjnego przed uszkodzeniem spowodowanym
+działaniem aplikacji.
+
+procedura obsługi przerwania (interrupt handler) - urządzenie pośredniczące pomiędzy procesorem a urządzeniami mogącymi rządania przerwań, stosowany ze względu na ilość możliwych urządzeń chcących zgłaszać przerwania, procedura obsługi przerwania jest sterownikiem dla kontrolera przerwań, W procedurze tej z reguły odczytywany jest rejestr kontrolny kontrolera przerwań i to pozwala na stwierdzane, które urządzenie wystawiło przerwanie. Na podstawie tego sterownik kontrolera przerwań uruchamia podprogram obsługujący urządzenie (ang. device handler), które wystawiło to żądanie przerwania
+
+Co robi procesor przed pobraniem pierwszej instrukcji procedury obsługi przerwania(ang.interrupthandler) i po natrafieniu na instrukcję powrotu z przerwania? 
+Gdy procesor natrafi na Interrupt request, wyłączy następne przerwania, ustawi kontroler żeby wskazywał na prawidłowe wejście do wektora przerwań, zapisze kontekst obecnie wykonywanego strumienia instrukcji, po powrocie przywróci kontekst programu i włączy z powrotem przerwania
+
+Czemu procedura obsługi przerwania powinna być wykonywana w trybie nadzorcy i używać odrębnego stosu?
+Tryb nadzorcy żeby wyłączyć przerwania i zapisać kontekst programu.
+Drugi stos 
+
+#Zadanie3
+Jakie jest znaczenie słowa kluczowego «volatile»? - zmienna której wartość może być zmieniona niezależnie od kodu programu
+Wymień co najmniej dwa scenariusze, w których użycie wskaźników do ulotnej zawartości pamięci jest niezbędne dla poprawności działania programu.
+- Mikrokontrolery i ich przerwania
+- Urządzenia dokonujące pomiarów w czasie rzeczywistym np termometr, prędkościomierz
+
+
+#Zadanie 4
+opisz składowe pliku wykonywalnego
+#TODO
+
+Czym różni się sekcja od segmentu?
+#TODO
+
+Co opisują nagłówki programu? 
+#TODO
+
+Skąd system operacyjny wie, pod jakim adresem ma umieścić segmenty programu i gdzie położona jest pierwsza instrukcja programu?
+#TODO
+
+#Zadanie 5
+lokalności odwołań - w każdej fazie wykonania program korzysta jedynie z drobnej części całego zbioru stron
+
+lokalność czasowa - jeśli dane miejsce w pamięci zostało użyte to prawdopodobnie zostanie użyte w niedalekiej przyszłości
+
+lokalność przestrzenna - jeśli obiekt był niedawno rządany to obiekty leżące w pobliżu będą także prawdopodobnie rządane np dostęp to tablicy
+sum = 0;
+for(i = 0; i < n; i++)
+ sum += a[i];
+return sum;
+
+data references
+• sukcesywne dostępy do kolejnych elementów tablicy (co 1 krok) – lokalność przestrzenna
+• dostęp do zmiennej sum w każdej iteracji – lokalność czasowa
+instruction references
+• instrukcje sekwencyjne (nie ma goto itp.) – lokalność przestrzenna
+• powtarzalna instrukcja w pętli – lokalność czasowa
+
+ Opisz jak stosuje się tę zasadę w projektowaniu systemów komputerowychna przykładzie pamięci operacyjnej, dysku twardego i sieci Web.
+
+Pamięć podręczna przyspiesza dostęp do relatywnie wolnej pamięci RAM. Charakteryzuje się bardzo krótkim czasem dostępu. Jest używana do przechowywania danych, które będą w niedługim czasie przetwarzane. Na współczesnych procesorach są 2 lub 3 poziomy pamięci podręcznej L1 (zintegrowana z procesorem), a także L2 i L3 (umieszczone w jednym układzie scalonym razem z procesorem lub na płycie głównej). 
+
+Pamięć podręczna dysku twardego przyspiesza dostęp do bardzo wolnej pamięci masowej (w porównaniu do pamięci RAM, do której dane są pobierane). Pamięć podręczna o wielkości od 128 KB do 128 MB jest zazwyczaj podzielona na dwie części: obszar podsystemu odpowiedzialnego za odczyt z wyprzedzeniem i buforowanie odczytu oraz mniejszy obszar opóźnionego zapisu. Dysk z kontrolerem komunikuje się magistralą szybszą niż najszybsze budowane dyski twarde – daje to możliwość przechowania danych w buforze i wysłania do kontrolera bez wykonywania cyklu dostępu do nośnika oraz wpływa pozytywnie na szybkość całego systemu. 
+
+Pamięć podręczna przeglądarki oznacza miejsce na dysku twardym, w którym przeglądarka internetowa przechowuje odwiedzone uprzednio strony (lub części stron) WWW. Ma to na celu przyspieszenie przeglądania stron internetowych, gdyż nie ma potrzeby ściągania odwiedzonych już stron z Internetu. Często wskazanym procesem jest czyszczenie schowka przeglądarki.
+
+
+
+
