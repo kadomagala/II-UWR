@@ -1,0 +1,10 @@
+{
+  "name": "Zad5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": 
+    {"build" : "node app.js"}
+
+  
+}
