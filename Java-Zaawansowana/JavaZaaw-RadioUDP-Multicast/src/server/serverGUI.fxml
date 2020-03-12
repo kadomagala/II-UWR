@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<GridPane hgap="10" prefHeight="204.0" prefWidth="297.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Label text="Currently Playing:" GridPane.rowIndex="2" />
+      <Label fx:id="songNameLbl" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+      <Label text="Server status:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="serverStatusLbl" text="Offline" textFill="RED" GridPane.columnIndex="1" />
+      <Button fx:id="startServerBtn" mnemonicParsing="false" onAction="#handleStartServer" text="Start Server" GridPane.rowIndex="1" />
+      <Button fx:id="stopServerBtn" mnemonicParsing="false" onAction="#handleStopServer" text="Stop Server" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   </children>
+</GridPane>

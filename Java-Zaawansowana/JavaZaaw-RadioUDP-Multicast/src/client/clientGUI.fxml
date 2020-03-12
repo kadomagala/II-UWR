@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane hgap="10" prefHeight="188.0" prefWidth="302.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Label text="Currently Playing:" />
+      <Label fx:id="currentLbl" prefHeight="17.0" prefWidth="385.0" GridPane.rowIndex="1" />
+      <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0" GridPane.rowIndex="2" />
+   </children>
+</GridPane>

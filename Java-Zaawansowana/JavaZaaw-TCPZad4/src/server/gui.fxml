@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane prefHeight="292.0" prefWidth="323.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+      <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+   </rowConstraints>
+   <children>
+      <Label prefHeight="31.0" prefWidth="312.0" text="What The Number Server">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="30.0" prefWidth="200.0" GridPane.rowIndex="2">
+         <children>
+            <Button fx:id="turnOnButton" mnemonicParsing="false" onAction="#handleTurnOnButton" prefHeight="25.0" prefWidth="97.0" text="Start" />
+            <Button fx:id="turnOffButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleTurnOffButton" prefHeight="25.0" prefWidth="95.0" text="Stop" />
+         </children>
+      </HBox>
+      <HBox prefHeight="20.0" prefWidth="200.0" GridPane.rowIndex="1">
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="109.0" text="Server Status:" textAlignment="RIGHT" />
+            <Label fx:id="serverStatusLabel" alignment="CENTER" prefHeight="17.0" prefWidth="55.0" text="Offline" textAlignment="CENTER" textFill="RED" />
+         </children>
+      </HBox>
+      <Label prefHeight="17.0" prefWidth="200.0" text="Game " GridPane.rowIndex="4">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="31.0" prefWidth="251.0" GridPane.rowIndex="5">
+         <children>
+            <Label prefHeight="20.0" prefWidth="115.0" text="Drawn number:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="drawnNumberLabel" prefHeight="17.0" prefWidth="101.0" text="9999">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="40.0" prefWidth="251.0" GridPane.rowIndex="6">
+         <children>
+            <Label prefHeight="20.0" prefWidth="141.0" text="Current Client guess:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="clientGuessLabel" prefHeight="17.0" prefWidth="110.0" text="1500">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="30.0" prefWidth="251.0" GridPane.rowIndex="7">
+         <children>
+            <Label prefHeight="20.0" prefWidth="118.0" text="Try number:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="tryNumLabel" prefHeight="20.0" prefWidth="99.0" text="0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</GridPane>
